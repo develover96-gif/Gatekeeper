@@ -24,6 +24,12 @@ interface GateEventDao {
   @Query("SELECT * FROM gate_events WHERE timestamp >= :sinceTimestamp ORDER BY timestamp DESC")
   fun getEventsSince(sinceTimestamp: Long): Flow<List<GateEventEntity>>
 
+  @Query("SELECT * FROM gate_events WHERE packageName = :packageName ORDER BY timestamp DESC LIMIT :limit")
+  suspend fun getRecentEventsForPackageSync(packageName: String, limit: Int): List<GateEventEntity>
+
+  @Query("SELECT * FROM gate_events WHERE packageName = :packageName AND timestamp >= :sinceTimestamp ORDER BY timestamp DESC")
+  suspend fun getEventsForPackageSinceSync(packageName: String, sinceTimestamp: Long): List<GateEventEntity>
+
   @Query("SELECT COUNT(*) FROM gate_events")
   suspend fun getEventCount(): Int
 

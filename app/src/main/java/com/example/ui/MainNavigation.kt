@@ -48,11 +48,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -251,6 +253,12 @@ fun MainNavigation(
               )
             }
             is ScreenRoute.Dashboard -> {
+              val isAdaptiveGatesEnabled by repository.isAdaptiveGatesEnabled.collectAsStateWithLifecycle()
+              var adaptiveStatus by remember { mutableStateOf("") }
+              LaunchedEffect(Unit) {
+                adaptiveStatus = repository.getAdaptiveIntelligenceStatus()
+              }
+              
               DashboardScreen(
                 apps = apps,
                 weeklyStats = weeklyStats,
@@ -258,6 +266,10 @@ fun MainNavigation(
                 milestoneMessage = milestoneMessage,
                 onToggleAppGated = { pkg, gated -> repository.toggleAppGated(pkg, gated) },
                 onToggleCategoryGated = { cat, gated -> repository.toggleCategoryGated(cat, gated) },
+                isZenModeActive = isZenModeActive,
+                zenModeRemainingMinutes = repository.getZenRemainingMinutes(),
+                isAdaptiveGatesEnabled = isAdaptiveGatesEnabled,
+                adaptiveStatus = adaptiveStatus,
                 onOpenAppDetails = { app ->
                   selectedAppForModal = app
                   currentRoute = ScreenRoute.SecurityGateModal
@@ -318,6 +330,12 @@ fun MainNavigation(
               )
             }
             is ScreenRoute.Settings -> {
+              val isAdaptiveGatesEnabled by repository.isAdaptiveGatesEnabled.collectAsStateWithLifecycle()
+              var adaptiveStatus by remember { mutableStateOf("Learning patterns...") }
+              LaunchedEffect(Unit) {
+                adaptiveStatus = repository.getAdaptiveIntelligenceStatus()
+              }
+              
               SettingsScreen(
                 tactileFriction = tactileFriction,
                 emergencyOverride = emergencyOverride,
@@ -327,6 +345,8 @@ fun MainNavigation(
                 isZenModeActive = isZenModeActive,
                 zenModeDurationMinutes = zenModeDurationMinutes,
                 zenModeRemainingMinutes = repository.getZenRemainingMinutes(),
+                isAdaptiveGatesEnabled = isAdaptiveGatesEnabled,
+                adaptiveIntelligenceStatus = adaptiveStatus,
                 socialCategoryLimitMinutes = repository.getCategoryDailyLimitMinutes("Social"),
                 entertainmentCategoryLimitMinutes = repository.getCategoryDailyLimitMinutes("Entertainment"),
                 onToggleTactileFriction = { repository.setTactileFriction(it) },
@@ -338,6 +358,7 @@ fun MainNavigation(
                   if (active) repository.startZenMode(mins) else repository.stopZenMode()
                 },
                 onSetZenModeDuration = { repository.setZenModeDuration(it) },
+                onToggleAdaptiveGates = { repository.setAdaptiveGatesEnabled(it) },
                 onSetCategoryDailyLimit = { cat, mins -> repository.setCategoryDailyLimit(cat, mins) },
                 onNavigateToMathCalibration = { currentRoute = ScreenRoute.MathChallengeSettings }
               )

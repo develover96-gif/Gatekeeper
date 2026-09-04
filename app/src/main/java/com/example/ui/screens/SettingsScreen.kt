@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.ChevronRight
@@ -79,6 +81,8 @@ fun SettingsScreen(
   isZenModeActive: Boolean = false,
   zenModeDurationMinutes: Int = 25,
   zenModeRemainingMinutes: Int = 0,
+  isAdaptiveGatesEnabled: Boolean = false,
+  adaptiveIntelligenceStatus: String = "Learning your patterns...",
   socialCategoryLimitMinutes: Int = 45,
   entertainmentCategoryLimitMinutes: Int = 60,
   onToggleTactileFriction: (Boolean) -> Unit,
@@ -88,6 +92,7 @@ fun SettingsScreen(
   onSetReopenGraceSeconds: (Int) -> Unit = {},
   onToggleZenMode: (Boolean, Int) -> Unit = { _, _ -> },
   onSetZenModeDuration: (Int) -> Unit = {},
+  onToggleAdaptiveGates: (Boolean) -> Unit = {},
   onSetCategoryDailyLimit: (String, Int) -> Unit = { _, _ -> },
   onNavigateToMathCalibration: () -> Unit
 ) {
@@ -107,6 +112,8 @@ fun SettingsScreen(
     LazyColumn(
       modifier = Modifier
         .fillMaxSize()
+        .widthIn(max = 600.dp)
+        .align(Alignment.TopCenter)
         .padding(horizontal = 20.dp),
       verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
@@ -505,6 +512,95 @@ fun SettingsScreen(
                     fontWeight = FontWeight.SemiBold
                   )
                 }
+              }
+            }
+          }
+        }
+      }
+
+      // Smart Gates Section
+      item {
+        Text(
+          text = "SMART GATES (ADAPTIVE LEARNING)",
+          color = TextMuted,
+          fontSize = 10.sp,
+          fontWeight = FontWeight.SemiBold,
+          letterSpacing = 0.08.sp
+        )
+      }
+
+      item {
+        GlassCard(
+          modifier = Modifier.fillMaxWidth(),
+          backgroundColor = if (isAdaptiveGatesEnabled) Color(0xFF1A1C2E) else SurfaceContainerLow,
+          borderColor = if (isAdaptiveGatesEnabled) PrimaryIndigo.copy(alpha = 0.4f) else BorderDefault,
+          cornerRadius = 16.dp
+        ) {
+          Column(modifier = Modifier.padding(14.dp)) {
+            Row(
+              modifier = Modifier.fillMaxWidth(),
+              horizontalArrangement = Arrangement.SpaceBetween,
+              verticalAlignment = Alignment.CenterVertically
+            ) {
+              Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
+                Box(
+                  modifier = Modifier
+                    .size(32.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(PrimaryIndigo.copy(alpha = 0.2f)),
+                  contentAlignment = Alignment.Center
+                ) {
+                  Icon(
+                    Icons.Default.AutoAwesome,
+                    contentDescription = null,
+                    tint = PrimaryIndigoGlow,
+                    modifier = Modifier.size(18.dp)
+                  )
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                Column {
+                  Text(
+                    text = "Smart Gate Intelligence",
+                    color = TextPrimary,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold
+                  )
+                  Text(
+                    text = "Dynamic friction adjusts based on your context",
+                    color = TextSecondary,
+                    fontSize = 11.sp
+                  )
+                }
+              }
+              GlassSwitch(
+                checked = isAdaptiveGatesEnabled,
+                onCheckedChange = onToggleAdaptiveGates
+              )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+            Box(
+              modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(10.dp))
+                .background(SurfaceContainerHigh.copy(alpha = 0.5f))
+                .border(1.dp, BorderSubtle, RoundedCornerShape(10.dp))
+                .padding(12.dp)
+            ) {
+              Row(verticalAlignment = Alignment.Top) {
+                Icon(
+                  Icons.Default.CheckCircle,
+                  contentDescription = null,
+                  tint = if (adaptiveIntelligenceStatus.contains("Active")) CalmMoss else TextMuted,
+                  modifier = Modifier.size(14.dp).padding(top = 2.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                  text = adaptiveIntelligenceStatus,
+                  color = if (adaptiveIntelligenceStatus.contains("Active")) TextPrimary else TextSecondary,
+                  fontSize = 11.sp,
+                  lineHeight = 16.sp
+                )
               }
             }
           }

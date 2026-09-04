@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -89,12 +90,18 @@ fun OnboardingAppPickerScreen(
 
   val activeCount = apps.count { it.isGated }
 
-  Column(
+  Box(
     modifier = Modifier
       .fillMaxSize()
-      .background(CanvasBase)
-      .padding(horizontal = 20.dp, vertical = 16.dp)
+      .background(CanvasBase),
+    contentAlignment = Alignment.TopCenter
   ) {
+    Column(
+      modifier = Modifier
+        .fillMaxSize()
+        .widthIn(max = 600.dp)
+        .padding(horizontal = 20.dp, vertical = 16.dp)
+    ) {
     // Stepper Header
     Row(
       modifier = Modifier
@@ -405,6 +412,7 @@ fun OnboardingAppPickerScreen(
     )
 
     Spacer(modifier = Modifier.height(8.dp))
+    }
   }
 }
 

@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.LazyRow
@@ -46,6 +47,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.SelfImprovement
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.SmartDisplay
@@ -122,7 +124,11 @@ fun DashboardScreen(
   onSimulatePromptGate: (String) -> Unit = {},
   onAddNewApp: (GatedAppEntity) -> Unit = {},
   onOpenPrototypeSwitcher: () -> Unit,
-  appPickerViewModel: AppPickerViewModel? = null
+  appPickerViewModel: AppPickerViewModel? = null,
+  isZenModeActive: Boolean = false,
+  zenModeRemainingMinutes: Int = 0,
+  isAdaptiveGatesEnabled: Boolean = false,
+  adaptiveStatus: String = ""
 ) {
   var showMenu by remember { mutableStateOf(false) }
   var showAddAppDialog by remember { mutableStateOf(false) }
@@ -174,6 +180,8 @@ fun DashboardScreen(
     LazyColumn(
       modifier = Modifier
         .fillMaxSize()
+        .widthIn(max = 600.dp)
+        .align(Alignment.TopCenter)
         .padding(horizontal = 20.dp),
       verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
@@ -311,6 +319,20 @@ fun DashboardScreen(
               fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
             )
           }
+        }
+      }
+
+      // Zen Mode Status Bar
+      if (isZenModeActive) {
+        item {
+          ZenModeStatusBanner(remainingMinutes = zenModeRemainingMinutes)
+        }
+      }
+
+      // Adaptive Intelligence Status Bar
+      if (isAdaptiveGatesEnabled && adaptiveStatus.isNotEmpty()) {
+        item {
+          AdaptiveIntelligenceStatusBanner(status = adaptiveStatus)
         }
       }
 
@@ -982,6 +1004,93 @@ fun DashboardScreen(
         showAddAppDialog = false
       }
     )
+  }
+}
+
+@Composable
+private fun AdaptiveIntelligenceStatusBanner(status: String) {
+  val isActive = status.contains("Active")
+  GlassCard(
+    modifier = Modifier
+      .fillMaxWidth()
+      .padding(bottom = 4.dp),
+    backgroundColor = if (isActive) Color(0xFF1A1C2E).copy(alpha = 0.8f) else SurfaceContainerLow.copy(alpha = 0.8f),
+    borderColor = if (isActive) PrimaryIndigo.copy(alpha = 0.3f) else BorderSubtle,
+    cornerRadius = 14.dp
+  ) {
+    Row(
+      modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp),
+      verticalAlignment = Alignment.CenterVertically
+    ) {
+      Box(
+        modifier = Modifier
+          .size(24.dp)
+          .clip(CircleShape)
+          .background(if (isActive) PrimaryIndigo.copy(alpha = 0.2f) else SurfaceContainerHigh),
+        contentAlignment = Alignment.Center
+      ) {
+        Icon(
+          Icons.Default.Security,
+          contentDescription = null,
+          tint = if (isActive) PrimaryIndigoGlow else TextMuted,
+          modifier = Modifier.size(14.dp)
+        )
+      }
+      Spacer(modifier = Modifier.width(12.dp))
+      Text(
+        text = status,
+        color = if (isActive) TextPrimary else TextSecondary,
+        fontSize = 11.sp,
+        fontWeight = if (isActive) FontWeight.Medium else FontWeight.Normal,
+        lineHeight = 15.sp
+      )
+    }
+  }
+}
+
+@Composable
+private fun ZenModeStatusBanner(remainingMinutes: Int) {
+  GlassCard(
+    modifier = Modifier
+      .fillMaxWidth()
+      .padding(bottom = 4.dp),
+    backgroundColor = Color(0xFF13281E).copy(alpha = 0.8f),
+    borderColor = CalmMoss.copy(alpha = 0.3f),
+    cornerRadius = 14.dp
+  ) {
+    Row(
+      modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp),
+      verticalAlignment = Alignment.CenterVertically
+    ) {
+      Box(
+        modifier = Modifier
+          .size(24.dp)
+          .clip(CircleShape)
+          .background(CalmMoss.copy(alpha = 0.2f)),
+        contentAlignment = Alignment.Center
+      ) {
+        Icon(
+          Icons.Default.SelfImprovement,
+          contentDescription = null,
+          tint = CalmMoss,
+          modifier = Modifier.size(14.dp)
+        )
+      }
+      Spacer(modifier = Modifier.width(12.dp))
+      Column {
+        Text(
+          text = "Digital Sanctuary Active",
+          color = TextPrimary,
+          fontSize = 11.sp,
+          fontWeight = FontWeight.SemiBold
+        )
+        Text(
+          text = "$remainingMinutes minutes until distraction-free window expires",
+          color = CalmMoss,
+          fontSize = 10.sp
+        )
+      }
+    }
   }
 }
 

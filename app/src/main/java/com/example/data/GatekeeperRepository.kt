@@ -64,6 +64,12 @@ class GatekeeperRepository(private val db: AppDatabase, private val context: Con
   private val _zenModeActiveUntil = MutableStateFlow(prefs.getLong("zen_mode_until", 0L))
   val zenModeActiveUntil = _zenModeActiveUntil.asStateFlow()
 
+  // Adaptive Gate Intelligence
+  private val _isAdaptiveGatesEnabled = MutableStateFlow(prefs.getBoolean("adaptive_gates_enabled", false))
+  val isAdaptiveGatesEnabled = _isAdaptiveGatesEnabled.asStateFlow()
+
+  private val adaptiveEngine = AdaptiveChallengeEngine(db.gateEventDao())
+
   private val _isZenModeActiveFlow = MutableStateFlow(System.currentTimeMillis() < prefs.getLong("zen_mode_until", 0L))
   val isZenModeActiveFlow = _isZenModeActiveFlow.asStateFlow()
 
@@ -379,6 +385,27 @@ class GatekeeperRepository(private val db: AppDatabase, private val context: Con
   fun setZenModeDuration(durationMinutes: Int) {
     _zenModeDurationMinutes.value = durationMinutes
     prefs.edit().putInt("zen_mode_duration_minutes", durationMinutes).apply()
+  }
+
+  // --- ADAPTIVE INTELLIGENCE ---
+  fun setAdaptiveGatesEnabled(enabled: Boolean) {
+    _isAdaptiveGatesEnabled.value = enabled
+    prefs.edit().putBoolean("adaptive_gates_enabled", enabled).apply()
+  }
+
+  suspend fun getAdaptiveChallenge(packageName: String, baseType: String): Pair<String, Int> {
+    if (!_isAdaptiveGatesEnabled.value) return baseType to 2
+    val score = adaptiveEngine.computeVulnerabilityScore(packageName)
+    return adaptiveEngine.selectChallengeForScore(score, baseType)
+  }
+
+  suspend fun getAdaptiveIntelligenceStatus(): String {
+    val count = db.gateEventDao().getEventCount()
+    return if (count < AdaptiveChallengeEngine.MIN_SAMPLES * 2) {
+      "Gatekeeper is learning your patterns — adaptive gates unlock in ${((AdaptiveChallengeEngine.MIN_SAMPLES * 2) - count).coerceAtLeast(1)} more events."
+    } else {
+      "Adaptive Intelligence Active: Optimizing friction based on your behavioral patterns."
+    }
   }
 
   fun isCategoryDistracting(category: String): Boolean {

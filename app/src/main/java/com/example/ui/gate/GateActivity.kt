@@ -28,6 +28,8 @@ class GateActivity : ComponentActivity() {
     const val EXTRA_PACKAGE_NAME = "extra_package_name"
     const val EXTRA_APP_NAME = "extra_app_name"
     const val EXTRA_CHALLENGE_TYPE = "extra_challenge_type"
+    const val EXTRA_ADAPTIVE_DIFFICULTY = "extra_adaptive_difficulty"
+    const val EXTRA_ADAPTIVE_STEPS = "extra_adaptive_steps"
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +39,8 @@ class GateActivity : ComponentActivity() {
     val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME) ?: "com.instagram.android"
     val appName = intent.getStringExtra(EXTRA_APP_NAME) ?: "Instagram"
     val initialChallengeType = intent.getStringExtra(EXTRA_CHALLENGE_TYPE) ?: "MATH"
+    val adaptiveDifficulty = intent.getIntExtra(EXTRA_ADAPTIVE_DIFFICULTY, -1)
+    val adaptiveSteps = intent.getIntExtra(EXTRA_ADAPTIVE_STEPS, -1)
 
     val repository = GatekeeperRepository(AppDatabase.getDatabase(this), this)
 
@@ -82,12 +86,12 @@ class GateActivity : ComponentActivity() {
             "STEPS" -> {
               GateOverlayStepContent(
                 appName = appName,
-                targetSteps = repository.stepTarget.value,
+                targetSteps = if (adaptiveSteps > 0) adaptiveSteps else repository.stepTarget.value,
                 onUnlock = {
                   repository.recordGateCleared(
                     packageName,
                     challengeType = "STEPS",
-                    stepsTaken = repository.stepTarget.value
+                    stepsTaken = if (adaptiveSteps > 0) adaptiveSteps else repository.stepTarget.value
                   )
                   openGatedAppAndFinish(packageName, appName)
                 },
@@ -141,7 +145,7 @@ class GateActivity : ComponentActivity() {
             else -> {
               GateOverlayMathContent(
                 appName = appName,
-                initialDifficultyLevel = if (activeChallenge == "PROBLEM_SOLVING") 4 else 2,
+                initialDifficultyLevel = if (adaptiveDifficulty > 0) adaptiveDifficulty else (if (activeChallenge == "PROBLEM_SOLVING") 4 else 2),
                 onUnlock = {
                   repository.recordGateCleared(
                     packageName,
