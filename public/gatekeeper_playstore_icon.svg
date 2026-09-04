@@ -1,0 +1,125 @@
+<!-- Gatekeeper Play Store App Icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1B22"/>
+      <stop offset="50%" stop-color="#121318"/>
+      <stop offset="100%" stop-color="#0A0B0E"/>
+    </linearGradient>
+
+    <!-- Indigo Primary Accent Gradient -->
+    <linearGradient id="primaryIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B8CF8"/>
+      <stop offset="100%" stop-color="#4D5EE3"/>
+    </linearGradient>
+
+    <!-- Glowing Cyan/Teal Mint Gradient for Mindful Pause -->
+    <linearGradient id="mindfulTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38E1B0"/>
+      <stop offset="100%" stop-color="#20B286"/>
+    </linearGradient>
+
+    <!-- Outer Glass Ring Subtle Gradient -->
+    <linearGradient id="glassStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Shield Fill Subtle Glass -->
+    <linearGradient id="shieldGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#282B36" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#15171D" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <!-- Soft Diffuse Ambient Glow Filters -->
+    <filter id="glowIndigo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <radialGradient id="centerBacklight" cx="50%" cy="46%" r="50%">
+      <stop offset="0%" stop-color="#5566F5" stop-opacity="0.28"/>
+      <stop offset="55%" stop-color="#34D399" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#121318" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Squircle Base for Play Store Icon (512x512 with standard 20% radius) -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Border Reflection -->
+  <rect width="510" height="510" x="1" y="1" rx="114" fill="none" stroke="url(#glassStroke)" stroke-width="2"/>
+
+  <!-- Ambient Radial Backlight in Center -->
+  <circle cx="256" cy="245" r="210" fill="url(#centerBacklight)"/>
+
+  <!-- Outer Concentric Breathing / Radar Ripple Ring (Gate / Pause aura) -->
+  <circle cx="256" cy="246" r="172" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="2"/>
+  <circle cx="256" cy="246" r="148" fill="none" stroke="#5566F5" stroke-opacity="0.16" stroke-width="2.5" stroke-dasharray="10 8"/>
+
+  <!-- Guardian Shield Silhouette (Holding deliberate intentional space) -->
+  <g filter="url(#subtleShadow)">
+    <!-- Base Glass Shield -->
+    <path d="M 256 94
+             C 324 94 380 120 380 120
+             C 380 236 348 322 256 388
+             C 164 322 132 236 132 120
+             C 132 120 188 94 256 94 Z"
+          fill="url(#shieldGlass)"
+          stroke="url(#glassStroke)"
+          stroke-width="2"/>
+
+    <!-- Luminous Shield Rim Accent -->
+    <path d="M 256 94
+             C 324 94 380 120 380 120
+             C 380 236 348 322 256 388
+             C 164 322 132 236 132 120
+             C 132 120 188 94 256 94 Z"
+          fill="none"
+          stroke="url(#primaryIndigo)"
+          stroke-width="3"
+          stroke-opacity="0.4"/>
+  </g>
+
+  <!-- Central Emblem: The Mindful Gateway / Intentional Pause Aperture -->
+  <!-- Concentric Calming Portal Ring -->
+  <circle cx="256" cy="236" r="72" fill="#14151C" stroke="url(#glassStroke)" stroke-width="2"/>
+  <circle cx="256" cy="236" r="62" fill="none" stroke="url(#primaryIndigo)" stroke-width="4" filter="url(#glowIndigo)"/>
+  
+  <!-- Calming Lotus / Petal Breathing Core Icon in Center -->
+  <!-- Center Petal -->
+  <path d="M 256 198
+           C 256 198 274 224 274 242
+           A 18 18 0 0 1 238 242
+           C 238 224 256 198 256 198 Z"
+        fill="url(#mindfulTeal)"/>
+
+  <!-- Left Petal -->
+  <path d="M 256 242
+           C 238 238 220 220 220 220
+           C 220 220 226 244 240 252
+           A 16 16 0 0 0 256 242 Z"
+        fill="url(#primaryIndigo)"/>
+
+  <!-- Right Petal -->
+  <path d="M 256 242
+           C 274 238 292 220 292 220
+           C 292 220 286 244 272 252
+           A 16 16 0 0 1 256 242 Z"
+        fill="url(#primaryIndigo)"/>
+
+  <!-- Two Clean Pause Bars (Sleek, grounded pill friction symbols) -->
+  <g transform="translate(0, 316)">
+    <rect x="238" y="0" width="10" height="24" rx="5" fill="#FFFFFF" fill-opacity="0.85"/>
+    <rect x="264" y="0" width="10" height="24" rx="5" fill="#FFFFFF" fill-opacity="0.85"/>
+  </g>
+
+  <!-- Tiny Glowing Active Sentinel Indicator (bottom center accent) -->
+  <circle cx="256" cy="432" r="5" fill="#38E1B0"/>
+  <circle cx="256" cy="432" r="10" fill="none" stroke="#38E1B0" stroke-opacity="0.3" stroke-width="2"/>
+</svg>

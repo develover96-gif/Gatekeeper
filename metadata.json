@@ -1,0 +1,8 @@
+{
+  "name": "Gatekeeper",
+  "description": "A calm, on-device friction checkpoint inserting a mindful pause between impulse and distracting apps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

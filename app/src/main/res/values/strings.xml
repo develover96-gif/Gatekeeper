@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Gatekeeper</string>
+    <string name="accessibility_service_description">Gatekeeper uses accessibility events solely to detect when configured distracting apps are brought to the foreground, allowing it to present an intentional friction pause. Gatekeeper never reads keystrokes, personal messages, or screen content.</string>
+</resources>

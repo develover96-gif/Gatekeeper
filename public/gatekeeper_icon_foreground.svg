@@ -1,0 +1,94 @@
+<!-- Android Adaptive Icon - Foreground Layer -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Indigo Accent Gradient -->
+    <linearGradient id="fgIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C8DF8"/>
+      <stop offset="100%" stop-color="#4F60E6"/>
+    </linearGradient>
+
+    <!-- Mindful Teal Gradient -->
+    <linearGradient id="fgTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38E1B0"/>
+      <stop offset="100%" stop-color="#20B286"/>
+    </linearGradient>
+
+    <!-- Frosted Glass Specular Rim -->
+    <linearGradient id="fgGlassStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+    </linearGradient>
+
+    <!-- Translucent Dark Glass Container -->
+    <linearGradient id="fgShieldSurface" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A2D39" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#161820" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Drop Shadow for Adaptive Parallax -->
+    <filter id="fgShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+
+    <filter id="fgGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Foreground Layer: Elements positioned within the 66% (338px diameter) Safe Zone of Android Adaptive Icon -->
+  <g filter="url(#fgShadow)">
+    <!-- Protective Glass Shield Form -->
+    <path d="M 256 126
+             C 314 126 358 148 358 148
+             C 358 244 330 316 256 368
+             C 182 316 154 244 154 148
+             C 154 148 198 126 256 126 Z"
+          fill="url(#fgShieldSurface)"
+          stroke="url(#fgGlassStroke)"
+          stroke-width="2.5"/>
+
+    <!-- Subtle Indigo Outline on Shield -->
+    <path d="M 256 126
+             C 314 126 358 148 358 148
+             C 358 244 330 316 256 368
+             C 182 316 154 244 154 148
+             C 154 148 198 126 256 126 Z"
+          fill="none"
+          stroke="url(#fgIndigo)"
+          stroke-width="2.5"
+          stroke-opacity="0.5"/>
+
+    <!-- Inner Core: Mindful Breathing Aperture & Portal -->
+    <circle cx="256" cy="235" r="54" fill="#13141B" stroke="url(#fgGlassStroke)" stroke-width="1.8"/>
+    <circle cx="256" cy="235" r="46" fill="none" stroke="url(#fgIndigo)" stroke-width="3" filter="url(#fgGlow)"/>
+
+    <!-- Center Breath Blossom Icon -->
+    <!-- Central Petal -->
+    <path d="M 256 206
+             C 256 206 270 225 270 238
+             A 14 14 0 0 1 242 238
+             C 242 225 256 206 256 206 Z"
+          fill="url(#fgTeal)"/>
+
+    <!-- Left Petal -->
+    <path d="M 256 238
+             C 243 235 228 221 228 221
+             C 228 221 233 240 244 246
+             A 12 12 0 0 0 256 238 Z"
+          fill="url(#fgIndigo)"/>
+
+    <!-- Right Petal -->
+    <path d="M 256 238
+             C 269 235 284 221 284 221
+             C 284 221 279 240 268 246
+             A 12 12 0 0 1 256 238 Z"
+          fill="url(#fgIndigo)"/>
+
+    <!-- Deliberate Pause Friction Indicator Pills -->
+    <g transform="translate(0, 302)">
+      <rect x="242" y="0" width="8" height="18" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
+      <rect x="262" y="0" width="8" height="18" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
+    </g>
+  </g>
+</svg>

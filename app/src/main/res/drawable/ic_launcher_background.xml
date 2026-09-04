@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- Background Base Canvas -->
+    <path android:pathData="M0,0h512v512h-512z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF191B22" />
+                <item android:offset="0.45" android:color="#FF121318" />
+                <item android:offset="1.0" android:color="#FF0A0B0E" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Center Radial Glow -->
+    <path android:pathData="M0,0h512v512h-512z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="256"
+                android:centerY="256"
+                android:gradientRadius="230">
+                <item android:offset="0.0" android:color="#385B6CF0" />
+                <item android:offset="0.45" android:color="#1034D399" />
+                <item android:offset="1.0" android:color="#00121318" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Concentric Calm Breathing Wave Rings in Background -->
+    <!-- Outer Ring (r=190) -->
+    <path
+        android:pathData="M66,256 a190,190 0 1,0 380,0 a190,190 0 1,0 -380,0 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#0DFFFFFF" />
+
+    <!-- Middle Ring (r=150) -->
+    <path
+        android:pathData="M106,256 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#1E5B6CF0" />
+
+    <!-- Inner Ring (r=110) -->
+    <path
+        android:pathData="M146,256 a110,110 0 1,0 220,0 a110,110 0 1,0 -220,0 Z"
+        android:strokeWidth="1.5"
+        android:strokeColor="#1834D399" />
+</vector>

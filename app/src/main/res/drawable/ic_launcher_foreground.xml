@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- Soft Depth Shadow under Shield -->
+    <path
+        android:pathData="M 256,138 C 314,138 358,160 358,160 C 358,256 330,328 256,380 C 182,328 154,256 154,160 C 154,160 198,138 256,138 Z"
+        android:fillColor="#99000000" />
+
+    <!-- Protective Glass Shield Form Surface -->
+    <path
+        android:pathData="M 256,126 C 314,126 358,148 358,148 C 358,244 330,316 256,368 C 182,316 154,244 154,148 C 154,148 198,126 256,126 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="0"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#E62A2D39" />
+                <item android:offset="1.0" android:color="#F2161820" />
+            </gradient>
+        </aapt:attr>
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#73FFFFFF" />
+                <item android:offset="1.0" android:color="#14FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Subtle Indigo Outline on Shield -->
+    <path
+        android:pathData="M 256,126 C 314,126 358,148 358,148 C 358,244 330,316 256,368 C 182,316 154,244 154,148 C 154,148 198,126 256,126 Z"
+        android:strokeWidth="2.5"
+        android:strokeAlpha="0.5"
+        android:strokeColor="#7C8DF8" />
+
+    <!-- Inner Core: Aperture Portal Outer Circle (r=54, cx=256, cy=235) -->
+    <path
+        android:pathData="M 202,235 a 54,54 0 1,0 108,0 a 54,54 0 1,0 -108,0 Z"
+        android:fillColor="#FF13141B"
+        android:strokeWidth="1.8">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#73FFFFFF" />
+                <item android:offset="1.0" android:color="#14FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Ambient Glow Ring around Aperture (r=46) -->
+    <path
+        android:pathData="M 210,235 a 46,46 0 1,0 92,0 a 46,46 0 1,0 -92,0 Z"
+        android:strokeWidth="6"
+        android:strokeAlpha="0.3"
+        android:strokeColor="#7C8DF8" />
+
+    <!-- Inner Core: Indigo Ring (r=46, cx=256, cy=235) -->
+    <path
+        android:pathData="M 210,235 a 46,46 0 1,0 92,0 a 46,46 0 1,0 -92,0 Z"
+        android:strokeWidth="3">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF7C8DF8" />
+                <item android:offset="1.0" android:color="#FF4F60E6" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Center Breath Blossom Icon -->
+    <!-- Central Petal -->
+    <path
+        android:pathData="M 256,206 C 256,206 270,225 270,238 A 14,14 0 0,1 242,238 C 242,225 256,206 256,206 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF38E1B0" />
+                <item android:offset="1.0" android:color="#FF20B286" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Left Petal -->
+    <path
+        android:pathData="M 256,238 C 243,235 228,221 228,221 C 228,221 233,240 244,246 A 12,12 0 0,0 256,238 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF7C8DF8" />
+                <item android:offset="1.0" android:color="#FF4F60E6" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Right Petal -->
+    <path
+        android:pathData="M 256,238 C 269,235 284,221 284,221 C 284,221 279,240 268,246 A 12,12 0 0,1 256,238 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF7C8DF8" />
+                <item android:offset="1.0" android:color="#FF4F60E6" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Deliberate Pause Friction Indicator Pills (y=302) -->
+    <!-- Left Pill (x=242, y=302, w=8, h=18, rx=4) -->
+    <path
+        android:pathData="M 246,302 a 4,4 0 0,1 4,4 v 10 a 4,4 0 0,1 -4,4 a 4,4 0 0,1 -4,-4 v -10 a 4,4 0 0,1 4,-4 Z"
+        android:fillColor="#E6FFFFFF" />
+
+    <!-- Right Pill (x=262, y=302, w=8, h=18, rx=4) -->
+    <path
+        android:pathData="M 266,302 a 4,4 0 0,1 4,4 v 10 a 4,4 0 0,1 -4,4 a 4,4 0 0,1 -4,-4 v -10 a 4,4 0 0,1 4,-4 Z"
+        android:fillColor="#E6FFFFFF" />
+</vector>

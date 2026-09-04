@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- Squircle Base for Gatekeeper Icon -->
+    <path
+        android:pathData="M 115,0 h 282 a 115,115 0 0,1 115,115 v 282 a 115,115 0 0,1 -115,115 h -282 a 115,115 0 0,1 -115,-115 v -282 a 115,115 0 0,1 115,-115 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF1A1B22" />
+                <item android:offset="0.5" android:color="#FF121318" />
+                <item android:offset="1.0" android:color="#FF0A0B0E" />
+            </gradient>
+        </aapt:attr>
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#59FFFFFF" />
+                <item android:offset="1.0" android:color="#0DFFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Ambient Radial Backlight in Center -->
+    <path android:pathData="M0,0h512v512h-512z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="256"
+                android:centerY="245"
+                android:gradientRadius="210">
+                <item android:offset="0.0" android:color="#475566F5" />
+                <item android:offset="0.55" android:color="#1434D399" />
+                <item android:offset="1.0" android:color="#00121318" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Outer Concentric Breathing Ripple Rings -->
+    <path
+        android:pathData="M84,246 a172,172 0 1,0 344,0 a172,172 0 1,0 -344,0 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#0FFFFFFF" />
+
+    <path
+        android:pathData="M108,246 a148,148 0 1,0 296,0 a148,148 0 1,0 -296,0 Z"
+        android:strokeWidth="2.5"
+        android:strokeColor="#295566F5" />
+
+    <!-- Soft Shadow under Shield -->
+    <path
+        android:pathData="M 256,104 C 324,104 380,130 380,130 C 380,246 348,332 256,398 C 164,332 132,246 132,130 C 132,130 188,104 256,104 Z"
+        android:fillColor="#80000000" />
+
+    <!-- Base Glass Shield -->
+    <path
+        android:pathData="M 256,94 C 324,94 380,120 380,120 C 380,236 348,322 256,388 C 164,322 132,236 132,120 C 132,120 188,94 256,94 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="0"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#BF282B36" />
+                <item android:offset="1.0" android:color="#D915171D" />
+            </gradient>
+        </aapt:attr>
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#59FFFFFF" />
+                <item android:offset="1.0" android:color="#0DFFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Luminous Shield Rim Accent -->
+    <path
+        android:pathData="M 256,94 C 324,94 380,120 380,120 C 380,236 348,322 256,388 C 164,322 132,236 132,120 C 132,120 188,94 256,94 Z"
+        android:strokeWidth="3"
+        android:strokeAlpha="0.4"
+        android:strokeColor="#7B8CF8" />
+
+    <!-- Concentric Calming Portal Ring Outer (r=72, cx=256, cy=236) -->
+    <path
+        android:pathData="M 184,236 a 72,72 0 1,0 144,0 a 72,72 0 1,0 -144,0 Z"
+        android:fillColor="#FF14151C"
+        android:strokeWidth="2">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#59FFFFFF" />
+                <item android:offset="1.0" android:color="#0DFFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Ambient Glow Ring (r=62) -->
+    <path
+        android:pathData="M 194,236 a 62,62 0 1,0 124,0 a 62,62 0 1,0 -124,0 Z"
+        android:strokeWidth="8"
+        android:strokeAlpha="0.3"
+        android:strokeColor="#7B8CF8" />
+
+    <!-- Concentric Calming Portal Ring Inner (r=62, cx=256, cy=236) -->
+    <path
+        android:pathData="M 194,236 a 62,62 0 1,0 124,0 a 62,62 0 1,0 -124,0 Z"
+        android:strokeWidth="4">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF7B8CF8" />
+                <item android:offset="1.0" android:color="#FF4D5EE3" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Center Breath Blossom Icon -->
+    <!-- Center Petal -->
+    <path
+        android:pathData="M 256,198 C 256,198 274,224 274,242 A 18,18 0 0,1 238,242 C 238,224 256,198 256,198 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF38E1B0" />
+                <item android:offset="1.0" android:color="#FF20B286" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Left Petal -->
+    <path
+        android:pathData="M 256,242 C 238,238 220,220 220,220 C 220,220 226,244 240,252 A 16,16 0 0,0 256,242 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF7B8CF8" />
+                <item android:offset="1.0" android:color="#FF4D5EE3" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Right Petal -->
+    <path
+        android:pathData="M 256,242 C 274,238 292,220 292,220 C 292,220 286,244 272,252 A 16,16 0 0,1 256,242 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="512"
+                android:endY="512">
+                <item android:offset="0.0" android:color="#FF7B8CF8" />
+                <item android:offset="1.0" android:color="#FF4D5EE3" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Two Clean Pause Bars (translate y=316) -->
+    <!-- Left Bar (x=238, y=316, w=10, h=24, rx=5) -->
+    <path
+        android:pathData="M 243,316 a 5,5 0 0,1 5,5 v 14 a 5,5 0 0,1 -5,5 a 5,5 0 0,1 -5,-5 v -14 a 5,5 0 0,1 5,-5 Z"
+        android:fillColor="#D9FFFFFF" />
+
+    <!-- Right Bar (x=264, y=316, w=10, h=24, rx=5) -->
+    <path
+        android:pathData="M 269,316 a 5,5 0 0,1 5,5 v 14 a 5,5 0 0,1 -5,5 a 5,5 0 0,1 -5,-5 v -14 a 5,5 0 0,1 5,-5 Z"
+        android:fillColor="#D9FFFFFF" />
+
+    <!-- Active Sentinel Indicator (bottom center accent) -->
+    <path
+        android:pathData="M 251,432 a 5,5 0 1,0 10,0 a 5,5 0 1,0 -10,0 Z"
+        android:fillColor="#FF38E1B0" />
+
+    <path
+        android:pathData="M 246,432 a 10,10 0 1,0 20,0 a 10,10 0 1,0 -20,0 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#4D38E1B0" />
+</vector>
